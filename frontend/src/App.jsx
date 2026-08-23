@@ -7,6 +7,7 @@ import Auth from './components/Auth';
 function App() {
   const [reels, setReels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem('user');
@@ -43,7 +44,7 @@ function App() {
       setError('');
 
       const response = await fetch(
-        'http://localhost:3000/api/reels',
+        `${API_URL}/api/reels`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -72,7 +73,7 @@ function App() {
       setError('');
 
       const response = await fetch(
-        'http://localhost:3000/api/reels',
+        `${API_URL}/api/reels`,
         {
           method: 'POST',
           headers: {
@@ -107,7 +108,7 @@ function App() {
       setError('');
 
       const response = await fetch(
-        `http://localhost:3000/api/reels/${reelId}`,
+        `${API_URL}/api/reels/${reelId}`,
         {
           method: 'DELETE',
           headers: {
@@ -162,7 +163,7 @@ function App() {
 
     try {
       const response = await fetch(
-        'http://localhost:3000/api/me',
+        `${API_URL}/api/me`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

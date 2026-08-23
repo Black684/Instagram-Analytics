@@ -19,7 +19,7 @@ function Auth({ onLogin }) {
         : '/api/auth/login';
 
       const response = await fetch(
-        `http://localhost:3000${endpoint}`,
+        `${import.meta.env.VITE_API_URL}${endpoint}`,
         {
           method: 'POST',
           headers: {
